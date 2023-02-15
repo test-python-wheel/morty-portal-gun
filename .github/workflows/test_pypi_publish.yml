@@ -2,11 +2,11 @@ name: Python Package Test Publisher
 on:
   push:
     tags:
-      - "v*.*.*-beta"
-      - "v*.*.*-alpha"
-      - "v*.*.*-alpha-*"
-      - "v*.*.*-beta-*"
-      - "v*.*.*-rc-*"
+      - "v[9-0]+.[9-0]+.[9-0]+-beta"
+      - "v[9-0]+.[9-0]+.[9-0]+-alpha"
+      - "v[9-0]+.[9-0]+.[9-0]+-alpha-[9-0]+"
+      - "v[9-0]+.[9-0]+.[9-0]+-beta-[9-0]+"
+      - "v[9-0]+.[9-0]+.[9-0]+-rc-[9-0]+"
 jobs:
   build:
     runs-on: ubuntu-latest
