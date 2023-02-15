@@ -1,20 +1,24 @@
-from morty_portal_gun.main import app
-from typer.testing import CliRunner
-import json 
+import json
 from datetime import datetime
+
+from morty_portal_gun.database import reset
+from morty_portal_gun.main import app
+from morty_portal_gun.utilities import time
+from typer.testing import CliRunner
 
 runner = CliRunner()
 
 def seconds_between(d1, d2):
     d1 = datetime.strptime(d1, "%Y-%m-%d %H:%M:%S")
     d2 = datetime.strptime(d2, "%Y-%m-%d %H:%M:%S")
-    return abs((d2 - d1).seconds)
+    return int(abs((d2 - d1).seconds))
 
 def now():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
 def test_add():
+    reset()
     result = runner.invoke(app, ["add", "test"])
     assert result.exit_code == 0
     assert "Your item added successfully." in result.stdout
@@ -24,8 +28,9 @@ def test_add():
         
     time = file['_default']['1']['time']
     del file['_default']['1']['time']
-    
-    assert seconds_between(time, now()) < 1000
+
+    diff = seconds_between(time, now())
+    assert diff < 1000
     assert file == {'_default': {'1': {'item': 'test'}}}
 
 def test_show():
@@ -48,5 +53,3 @@ def test_reset():
         file = json.load(f)
     
     assert file == {'_default': {}}
-
-print(test_add())
