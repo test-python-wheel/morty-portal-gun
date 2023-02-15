@@ -23,10 +23,10 @@ def test_add():
         file = json.load(f)
         
     time = file['_default']['1']['time']
-    # del file['_default']['1']['time']
+    del file['_default']['1']['time']
     
     assert seconds_between(time, now()) < 1000
-    assert file == {'_default': {'1': {'item': 'test', 'time':time}}}
+    assert file == {'_default': {'1': {'item': 'test'}}}
 
 def test_show():
     result = runner.invoke(app, ["show"])
