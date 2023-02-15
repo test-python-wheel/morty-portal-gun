@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "morty-portal-gun"
-version = "1.0.0"
+version = "1.0.1"
 description = ""
 authors = ["test-python-wheel <test-python-wheel-project@outlook.com>"]
 readme = "README.md"
