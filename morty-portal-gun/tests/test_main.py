@@ -15,19 +15,18 @@ def now():
 
 
 def test_add():
-    # result = runner.invoke(app, ["add", "test"])
-    # assert result.exit_code == 0
-    # assert "Your item added successfully." in result.stdout
+    result = runner.invoke(app, ["add", "test"])
+    assert result.exit_code == 0
+    assert "Your item added successfully." in result.stdout
     
     with open("db.json" , "r") as f:
         file = json.load(f)
         
     time = file['_default']['1']['time']
-    print(time)
     # del file['_default']['1']['time']
-
-    # assert seconds_between(time, now()) < 1000
-    # assert file == {'_default': {'1': {'item': 'test'}}}
+    
+    assert seconds_between(time, now()) < 1000
+    assert file == {'_default': {'1': {'item': 'test', 'time':time}}}
 
 def test_show():
     result = runner.invoke(app, ["show"])
