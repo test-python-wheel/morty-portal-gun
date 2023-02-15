@@ -13,4 +13,8 @@ def all():
     return result
 
 def reset():
-    db.truncate()
+    try:
+        db.truncate()
+        return "Database Reset Successfully"
+    except:
+        return "Something went wrong"

@@ -20,4 +20,5 @@ def show():
 
 @app.command(help="reset all data")
 def reset():
-    database.reset()
+    result = database.reset()
+    print(result)
