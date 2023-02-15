@@ -1,6 +1,5 @@
-import typer
-
 import database
+import typer
 
 app = typer.Typer()
 
