@@ -20,6 +20,3 @@ def show():
 @app.command(help="reset all data")
 def reset():
     database.reset()
-    
-if __name__ == "__main__":
-    app()
