@@ -1,15 +1,16 @@
-import database
 import typer
+
+from . import database
 
 app = typer.Typer()
 
 @app.command(help="add new item")
 def add(item: str = typer.Argument(...)):
-    # try:
+    try:
         database.insert(item)
         print("Your item added successfully.")
-    # except:
-        # print("Something went wrong.")
+    except:
+        print("Something went wrong.")
 
 @app.command(help="list your items")
 def show():

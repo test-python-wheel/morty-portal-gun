@@ -1,6 +1,6 @@
 from tinydb import Query, TinyDB
 
-import utilities
+from . import utilities
 
 db = TinyDB('db.json')
 App = Query()
